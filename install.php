@@ -71,10 +71,24 @@ if (!$alreadyInstalled && !$errors && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$errors) {
         try {
-            $dsn = "mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4";
-            $pdo = new PDO($dsn, $dbUser, $dbPass, [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            ]);
+            $opts = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+            try {
+                $pdo = new PDO("mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4", $dbUser, $dbPass, $opts);
+            } catch (PDOException $e) {
+                // Veritabanı yoksa otomatik oluşturmayı dene (XAMPP/root gibi yetkili kullanıcılarda çalışır)
+                try {
+                    $root = new PDO("mysql:host={$dbHost};charset=utf8mb4", $dbUser, $dbPass, $opts);
+                    $safe = str_replace('`', '', $dbName);
+                    $root->exec("CREATE DATABASE IF NOT EXISTS `{$safe}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+                    $pdo = new PDO("mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4", $dbUser, $dbPass, $opts);
+                } catch (PDOException $e2) {
+                    throw new RuntimeException(
+                        "Veritabanı \"{$dbName}\" bulunamadı ve otomatik oluşturulamadı. " .
+                        "Lütfen cPanel > MySQL Veritabanları (veya phpMyAdmin) bölümünden bu adda bir veritabanı " .
+                        "oluşturup tekrar deneyin."
+                    );
+                }
+            }
 
             // Tablolar + örnek içerik
             run_sql_file($pdo, $schemaFile);
