@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="820" viewBox="0 0 600 820">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b2a28"/>
+      <stop offset="1" stop-color="#54504a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="820" rx="8" fill="url(#g)"/>
+  <rect x="34" y="34" width="532" height="752" rx="4" fill="none" stroke="#c9bfa9" stroke-width="1.5" opacity="0.6"/>
+  <text x="300" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="22" letter-spacing="6" fill="#c9bfa9">KİTAP</text>
+  <text x="300" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="54" fill="#f6f1e7">Örnek</text>
+  <text x="300" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="54" fill="#f6f1e7">Kitap</text>
+  <line x1="240" y1="560" x2="360" y2="560" stroke="#c9bfa9" stroke-width="2"/>
+  <text x="300" y="720" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#c9bfa9">Kapak görseli buraya</text>
+</svg>

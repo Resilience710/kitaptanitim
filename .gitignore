@@ -1,0 +1,15 @@
+# Yapılandırma (kuruluma özel, sunucuda oluşturulur)
+config.php
+install.lock
+
+# Yüklenen görseller (kullanıcı içeriği) — klasör korunur, içerik korunmaz
+uploads/*
+!uploads/.gitkeep
+!uploads/.htaccess
+
+# Sistem / editör
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/

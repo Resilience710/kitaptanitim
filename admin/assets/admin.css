@@ -1,0 +1,84 @@
+/* Yönetim paneli stilleri (siteden bağımsız). */
+:root{
+  --a:#1b1b1a; --bg:#f4f1ec; --card:#ffffff; --bd:#e2ddd4; --mut:#7a756e;
+  --ok:#1c6b35; --okbg:#eaf7ee; --okbd:#bfe6cb;
+  --err:#a02617; --errbg:#fdecea; --errbd:#f4c7c0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#1b1b1a;font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--a)}
+
+/* Üst bar */
+.adm-top{background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:20}
+.adm-top__inner{max-width:1080px;margin:0 auto;padding:0 22px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.adm-brand{font-weight:700;text-decoration:none;font-size:1.05rem}
+.adm-nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.adm-nav a{padding:8px 13px;border-radius:8px;text-decoration:none;color:#444;font-size:.93rem}
+.adm-nav a:hover{background:#f0ece5}
+.adm-nav a.is-active{background:var(--a);color:#fff}
+.adm-logout{color:var(--err) !important}
+
+/* İçerik */
+.adm-main{padding:30px 0 60px}
+.adm-container{max-width:1080px;margin:0 auto;padding:0 22px}
+h1{font-size:1.55rem;margin:0 0 4px}
+h2{font-size:1.15rem;margin:0 0 14px}
+.adm-sub{color:var(--mut);margin:0 0 26px}
+
+/* Kart / form */
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:22px}
+.card h2{border-bottom:1px solid var(--bd);padding-bottom:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:16px}
+.field--full{grid-column:1 / -1}
+label{display:block;font-weight:600;font-size:.86rem;margin-bottom:6px}
+.hint{color:var(--mut);font-size:.8rem;margin-top:5px}
+input[type=text],input[type=url],input[type=number],input[type=password],select,textarea{
+  width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:.95rem;font-family:inherit;background:#fff
+}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--a)}
+textarea{resize:vertical;min-height:120px}
+input[type=color]{width:52px;height:38px;padding:2px;border:1px solid var(--bd);border-radius:8px;background:#fff;cursor:pointer;vertical-align:middle}
+.color-row{display:flex;align-items:center;gap:10px}
+.color-row input[type=text]{max-width:130px}
+
+/* Butonlar */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:100px;border:1.5px solid var(--a);background:var(--a);color:#fff;font-weight:600;font-size:.92rem;cursor:pointer;text-decoration:none}
+.btn:hover{opacity:.9}
+.btn--ghost{background:transparent;color:var(--a)}
+.btn--ghost:hover{background:var(--a);color:#fff;opacity:1}
+.btn--danger{border-color:var(--err);background:var(--err)}
+.btn--sm{padding:7px 14px;font-size:.84rem}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+
+/* Flash mesajları */
+.adm-flash{padding:12px 16px;border-radius:10px;margin-bottom:18px;font-size:.92rem}
+.adm-flash--success{background:var(--okbg);border:1px solid var(--okbd);color:var(--ok)}
+.adm-flash--error{background:var(--errbg);border:1px solid var(--errbd);color:var(--err)}
+
+/* Tablo */
+.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.table th,.table td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--bd);vertical-align:middle}
+.table th{background:#faf8f4;font-size:.82rem;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}
+.table tr:last-child td{border-bottom:0}
+.thumb{width:42px;height:56px;object-fit:cover;border-radius:6px;border:1px solid var(--bd)}
+.badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.76rem;font-weight:600}
+.badge--featured{background:#fff4d6;color:#8a6d1a}
+.badge--draft{background:#eee;color:#666}
+.badge--pub{background:var(--okbg);color:var(--ok)}
+
+/* Görsel yönetimi */
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.img-card{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:#fff}
+.img-card__media{aspect-ratio:3/4;background:#ece6dc}
+.img-card__media img{width:100%;height:100%;object-fit:cover}
+.img-card__body{padding:10px;display:flex;flex-direction:column;gap:8px}
+.img-card__row{display:flex;gap:6px;flex-wrap:wrap}
+
+.page-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+
+@media (max-width:680px){
+  .grid2{grid-template-columns:1fr}
+  .adm-nav{gap:2px}
+  .adm-nav a{padding:7px 9px;font-size:.85rem}
+}
